@@ -57,4 +57,4 @@ lint:
 	make clean && scan-build -V make
 
 python/rabinpoly.py: src/rabinpoly.h
-	ctypesgen.py -L $(LD_LIBRARY_PATH) -l rabinpoly -o python/rabinpoly.py $(CURDIR)/src/rabinpoly.h
+	ctypesgen -L $(LD_LIBRARY_PATH) -l rabinpoly -o python/rabinpoly.py $(CURDIR)/src/rabinpoly.h
