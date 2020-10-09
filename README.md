@@ -1,6 +1,8 @@
 librabinpoly
 ============
-
+===
+Hash is calculated in rabinpoly.c. Maybe I will modified the comments in source codes latter.
+===
 Rabin fingerprinting library in C, for chunking files into
 content-delimited variable sized blocks.
 
