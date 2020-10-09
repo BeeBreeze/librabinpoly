@@ -13,7 +13,7 @@ The API should not be considered stable until we reach version 1.X.
 
 Install
 =======
-
+I strongle recommend you use libtoolize after ./configure.
 From tarball
 ------------
 
