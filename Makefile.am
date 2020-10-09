@@ -1,5 +1,5 @@
 AUTOMAKE_OPTIONS = foreign
-# ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4
 
 # SUBDIRS = doc man script src
 SUBDIRS = src test python examples
