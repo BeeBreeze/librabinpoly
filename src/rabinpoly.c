@@ -321,7 +321,16 @@ static u_int64_t slide8(RabinPoly *rp, unsigned char m) {
 	rp->circbuf[rp->circbuf_pos] = m;
 	return rp->fingerprint = append8 (rp, rp->fingerprint ^ rp->U[om], m);
 }
-
+// p should be hash value
+// hash = ((hash << 8)|b ) ^ A[hash >> N    ] can be found in paper
+// METHODS AND SYSTEMS FOR DATA MANAGEMENT USING MULTIPLE
+// SELECTION CRITERIA
+// Here a more efficient way is used. 
+// hash = ((hash ^ U(a)) << 8)|b   ^ T[fp >> N] by wen xia's paper
+// p    = ((p    ^ U[omj]<< 8)|m ) ^ T[p  >> shift]
+// a, omj         content of the first byte of the sliding window
+// b, m           content of the last  byte of the sliding window
+// N, shift       length of sliding window
 static u_int64_t append8(RabinPoly *rp, u_int64_t p, unsigned char m) { 	
 	return ((p << 8) | m) ^ rp->T[p >> rp->shift]; 
 }
