@@ -71,7 +71,7 @@ def teof(size):
 		if rc:
 			assert rc == EOF
 			break
-		print size, total
+		print(size, total)
 	assert total == size, (total, size)
 
 teof(127)

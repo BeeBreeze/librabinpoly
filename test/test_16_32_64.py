@@ -62,7 +62,7 @@ for ref in refs:
 	block_done = ref[1]
 	rc = rp_block_next(rp)
 	if rc:
-		print 'rc', rc
+		print('rc', rc)
 		break
 	size = rpc.block_size
 	assert length == size, (length, size)

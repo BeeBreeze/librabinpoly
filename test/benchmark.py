@@ -46,9 +46,9 @@ def run():
             break
 
     lib.rp_free(rp)
-    print total_size
+    print(total_size)
 
 
-print timeit.timeit('run()', setup="from __main__ import run",
-        number=100)
+print(timeit.timeit('run()', setup="from __main__ import run",
+        number=100))
 # run()

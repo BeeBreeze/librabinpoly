@@ -35,15 +35,15 @@ while True:
 	inbuf = cast(rpc.inbuf, c_void_p).value
 	block_start = block_addr - inbuf
 	block_end = block_start + rpc.block_size
-	print block_start, block_end
+	print(block_start, block_end)
 	block = rpc.inbuf[block_start:block_end]
 	block = ''.join(map(chr,block))
 	h = hashlib.md5(block).hexdigest() 
-	print h
+	print(h)
 	assert h == 'ae5c932ab2e19291dd20c2c4ac382428'
 	i += 1
 
-print i
+print(i)
 assert i == 8
 
 lib.rp_free(rp)

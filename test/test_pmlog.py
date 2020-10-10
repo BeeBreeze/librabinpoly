@@ -41,7 +41,7 @@ while True:
 	block = ''.join(map(chr,block))
 	h = hashlib.md5(block).hexdigest() 
 	block_streampos = rpc.block_streampos
-	print '(%d, %d, "%s"),' % (block_streampos, block_size, h)
+	print('(%d, %d, "%s"),' % (block_streampos, block_size, h))
 	# assert hashes[i][0] == block_streampos, hashes[i]
 	# assert hashes[i][1] == block_size, hashes[i]
 	# assert hashes[i][2] == h, hashes[i]
