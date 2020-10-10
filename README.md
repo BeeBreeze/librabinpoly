@@ -27,11 +27,12 @@ From git
 --------
 
     make -f autotools.mk
-    ./configure
+    ./configure  --prefix=/usr
     make
     make test
-    make install
-
+    sudo make install
+After above steps, don't forget add /usr/local/lib in $PATH by
+export PATH=$PATH:/usr/local/lib.
 
 History
 =======
