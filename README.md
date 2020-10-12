@@ -1,6 +1,8 @@
 librabinpoly
 ============
 Hash is calculated in rabinpoly.c, with append8. Maybe I will modified the comments in source codes latter.
+In test/test_zeros.py and test/test_ones.py, chr(0) returns a string. However, in src/rabinpoly.c, the 2nd argument should be unsigned char.
+So, why make test in my laptop doesn't report any error?
 ===
 Rabin fingerprinting library in C, for chunking files into
 content-delimited variable sized blocks.
