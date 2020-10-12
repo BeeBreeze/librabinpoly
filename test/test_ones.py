@@ -19,7 +19,8 @@ rpc = rp.contents
 buf = create_string_buffer(buf_size)
 
 for i in range(buf_size):
-	buf[i] = chr(1).encode('ascii', errors='replace')
+	#buf[i] = chr(1).encode('ascii', errors='replace')
+	buf[i] = bytes([1])
 # buf[0] = chr(0x01);
 
 lib.rp_from_buffer(rp, buf, buf_size)
