@@ -2,7 +2,7 @@
 
 from ctypes import *
 import hashlib
-
+from platform import python_version
 import rabinpoly as lib
 
 window_size = 32
@@ -22,7 +22,10 @@ for i in range(buf_size):
 	#buf[i] = chr(1).encode('ascii', errors='replace')
 	#For i > 127, chr(i) in python2 is different from 
 	#bytes([i]).decode('ascii','backslashreplace')
-	buf[i] = bytes([1])
+	if int(python_version()[0]) < 3:
+		buf[i] = chr([1])
+	else:
+		buf[i] = bytes([1])
 # buf[0] = chr(0x01);
 
 lib.rp_from_buffer(rp, buf, buf_size)
@@ -41,7 +44,10 @@ while True:
 	print(block_start, block_end)
 	block = rpc.inbuf[block_start:block_end]
 	block = ''.join(map(chr,block))
-	h = hashlib.md5(block.encode('utf-8')).hexdigest() 
+	if int(python_version()[0]) < 3:
+		h = hashlib.md5(block).hexdigest() 
+	else:
+		h = hashlib.md5(block.encode('utf-8')).hexdigest() 
 	print(h)
 	assert h == 'ae5c932ab2e19291dd20c2c4ac382428'
 	i += 1
