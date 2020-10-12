@@ -20,6 +20,8 @@ buf = create_string_buffer(buf_size)
 
 for i in range(buf_size):
 	#buf[i] = chr(0).encode('ascii', errors='replace')
+	#For i > 127, chr(i) in python2 is different from 
+	#bytes([i]).decode('ascii','backslashreplace')
 	buf[i] = bytes([0])
 # buf[0] = chr(0x01);
 
