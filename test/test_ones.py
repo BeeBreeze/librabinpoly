@@ -19,7 +19,7 @@ rpc = rp.contents
 buf = create_string_buffer(buf_size)
 
 for i in range(buf_size):
-	buf[i] = chr(1)
+	buf[i] = chr(1).encode('ascii', errors='replace')
 # buf[0] = chr(0x01);
 
 lib.rp_from_buffer(rp, buf, buf_size)
@@ -38,7 +38,7 @@ while True:
 	print(block_start, block_end)
 	block = rpc.inbuf[block_start:block_end]
 	block = ''.join(map(chr,block))
-	h = hashlib.md5(block).hexdigest() 
+	h = hashlib.md5(block.encode('utf-8')).hexdigest() 
 	print(h)
 	assert h == 'ae5c932ab2e19291dd20c2c4ac382428'
 	i += 1
