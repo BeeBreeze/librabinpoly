@@ -44,6 +44,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+//In case you want to print some thing.
+//printf("%zu\n", rp->block_size);
 
 static inline void rp_find_block_end(RabinPoly *rp);
 
