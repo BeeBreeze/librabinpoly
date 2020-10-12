@@ -23,7 +23,7 @@ for i in range(buf_size):
 	#For i > 127, chr(i) in python2 is different from 
 	#bytes([i]).decode('ascii','backslashreplace')
 	if int(python_version()[0]) < 3:
-		buf[i] = chr([1])
+		buf[i] = chr(1)
 	else:
 		buf[i] = bytes([1])
 # buf[0] = chr(0x01);
