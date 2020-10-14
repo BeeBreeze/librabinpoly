@@ -12,7 +12,7 @@ would like to read ctypes_difference_py23.txt.
 If you read orginal repo, in test/test_zeros.py and test/test_ones.py, 
 chr(0) or chr(1) returns a string. However, in src/rabinpoly.c, 
 the 2nd argument should be unsigned char. That is to say, in 
-rabin.py, the 2nd argument of rp_from_buffer should be c_ubyte.
+rabinpoly.py, the 2nd argument of rp_from_buffer should be c_ubyte.
 If you use Python 2/3, c_ubyte should be c_char(read ctypes difference). 
 Nomatter what function/package you use, we should know that 
 chr() in python2 returns a string of number in [0,255], and
