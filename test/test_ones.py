@@ -11,48 +11,47 @@ avg_segment_size = 8192
 max_segment_size = 65536
 buf_size = 512*1024
 
-rp = lib.rp_new(
-		window_size, avg_segment_size, min_segment_size,
+rp = lib.rp_new(window_size, avg_segment_size, min_segment_size,
 		max_segment_size, buf_size)
 rpc = rp.contents
 
 buf = create_string_buffer(buf_size)
 
 for i in range(buf_size):
-	#buf[i] = chr(1).encode('ascii', errors='replace')
-	#For i > 127, chr(i) in python2 is different from 
-	#bytes([i]).decode('ascii','backslashreplace')
-	if int(python_version()[0]) < 3:
-		buf[i] = chr(1)
-	else:
-		buf[i] = bytes([1])
+    #buf[i] = chr(1).encode('ascii', errors='replace')
+    #For i > 127, chr(i) in python2 is different from 
+    #bytes([i]).decode('ascii','backslashreplace')
+    if int(python_version()[0]) < 3:
+        buf[i] = chr(1)
+    else:
+        buf[i] = bytes([1])
 # buf[0] = chr(0x01);
 
 lib.rp_from_buffer(rp, buf, buf_size)
 
 i = 0
 while True:
-	rc = lib.rp_block_next(rp)
-	if (rc):
-		break
-	assert rpc.block_size == max_segment_size, rpc.block_size
-	# http://blogs.skicelab.com/maurizio/ctypes-and-pointer-arithmetics.html
-	block_addr = cast(rpc.block_addr, c_void_p).value
-	inbuf = cast(rpc.inbuf, c_void_p).value
-	block_start = block_addr - inbuf
-	block_end = block_start + rpc.block_size
-	print(block_start, block_end)
-	block = rpc.inbuf[block_start:block_end]
-	block = ''.join(map(chr,block))
-	if int(python_version()[0]) < 3:
-		h = hashlib.md5(block).hexdigest() 
-	else:
-		h = hashlib.md5(block.encode('utf-8')).hexdigest() 
-	print(h)
-	assert h == 'ae5c932ab2e19291dd20c2c4ac382428'
-	i += 1
+    rc = lib.rp_block_next(rp)
+    if (rc):
+        break
+    assert rpc.block_size == max_segment_size, rpc.block_size
+    # http://blogs.skicelab.com/maurizio/ctypes-and-pointer-arithmetics.html
+    block_addr = cast(rpc.block_addr, c_void_p).value
+    inbuf = cast(rpc.inbuf, c_void_p).value
+    block_start = block_addr - inbuf
+    block_end = block_start + rpc.block_size
+    #print(block_start, block_end)
+    block = rpc.inbuf[block_start:block_end]
+    block = ''.join(map(chr,block))
+    if int(python_version()[0]) < 3:
+        h = hashlib.md5(block).hexdigest() 
+        assert h == 'ae5c932ab2e19291dd20c2c4ac382428'
+    else:
+        h = hashlib.md5(block.encode('utf-32')).hexdigest() 
+    #print(h)
+    i += 1
 
-print(i)
+#print(i)
 assert i == 8
 
 lib.rp_free(rp)
