@@ -936,6 +936,7 @@ if _libs["rabinpoly"].has("rp_new", "cdecl"):
 # /home/witcher/Deduplication/SampleRabinFingerprint/librabinpoly/src/rabinpoly.h: 72
 if _libs["rabinpoly"].has("rp_from_buffer", "cdecl"):
     rp_from_buffer = _libs["rabinpoly"].get("rp_from_buffer", "cdecl")
+    ## Modified by BeeBreeze
     #rp_from_buffer.argtypes = [POINTER(RabinPoly), POINTER(c_ubyte), c_size_t]
     rp_from_buffer.argtypes = [POINTER(RabinPoly), POINTER(c_char), c_size_t]
     rp_from_buffer.restype = None

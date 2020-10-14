@@ -1,9 +1,26 @@
 librabinpoly
 ============
-Hash is calculated in rabinpoly.c, with append8. Maybe I will modified the comments in source codes latter.
-In test/test_zeros.py and test/test_ones.py, chr(0) returns a string. However, in src/rabinpoly.c, the 2nd argument should be unsigned char.
-So, why make test in my laptop doesn't report any error?
-===
+
+BeeBreeze made some modification to be compatibile with Python 3.
+-----------------------------------------------------------------
+
+Hash is calculated in rabinpoly.c, with append8. 
+Maybe I will modify the comments in source codes latter.
+For data structure or compatibility problem, you may 
+would like to read ctypes_difference_py23.txt.
+
+If you read orginal repo, in test/test_zeros.py and test/test_ones.py, 
+chr(0) or chr(1) returns a string. However, in src/rabinpoly.c, 
+the 2nd argument should be unsigned char. That is to say, in 
+rabin.py, the 2nd argument of rp_from_buffer should be c_ubyte.
+If you use Python 2/3, c_ubyte should be c_char(read ctypes difference). 
+Nomatter what function/package you use, we should know that 
+chr() in python2 returns a string of number in [0,255], and
+bytes([]) in python3 returns bytes, whose integer form is 
+also in [0,255]. Although c_char means char type in C, 
+by testing, it can pass [0,255] to unsigned char value 
+correctly(you may printf src in rp_from_buffer in rabinpoly.c).
+
 Rabin fingerprinting library in C, for chunking files into
 content-delimited variable sized blocks.
 
@@ -15,7 +32,7 @@ The API should not be considered stable until we reach version 1.X.
 
 Install
 =======
-I strongle recommend you use libtoolize after ./configure.
+
 From tarball
 ------------
 

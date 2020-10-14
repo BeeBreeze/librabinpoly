@@ -1,0 +1,16 @@
+If you happen to meet dat structure problem, please read rabinpoly.py and pat attention
+to following difference. 
+
+            ctypes type     C type                                  Python type
+
+Python 2    c_char          char                                    1-character string
+Python 3    c_char          char                                    1-character bytes object
+
+Python 2    c_wchar         wchar_t                                 1-character unicode string
+Python 3    c_wchar         wchar_t                                 1-character string
+
+Python 2    c_char_p        char * (NUL terminated)                 string or None
+Python 3    c_char_p        char * (NUL terminated)                 bytes object or None
+
+Python 2    c_wchar_p       wchar_t * (NUL terminated)              unicode or None
+Python 3    c_wchar_p       wchar_t * (NUL terminated)              string or None

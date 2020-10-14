@@ -440,7 +440,9 @@ void rp_free(RabinPoly *rp)
 }
 
 void rp_from_buffer(RabinPoly *rp, unsigned char *src, size_t size) { 
-	rp_from_stream(rp, NULL);
+	//unsigned int tttt = *src;
+    //printf("%d\n", tttt);
+    rp_from_stream(rp, NULL);
 	assert(size <= rp->inbuf_size);
 	memcpy(rp->inbuf, src, size);
 	rp->inbuf_data_size = size;
