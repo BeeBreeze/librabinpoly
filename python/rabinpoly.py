@@ -12,7 +12,7 @@ __docformat__ =  'restructuredtext'
 
 import ctypes, os, sys
 from ctypes import *
-
+from platform import python_version
 _int_types = (c_int16, c_int32)
 if hasattr(ctypes, 'c_int64'):
     # Some builds of ctypes apparently do not have c_int64
@@ -245,7 +245,10 @@ class String(MutableString, Union):
 
         # Convert from str
         elif isinstance(obj, str):
-            return cls(obj)
+            if int(python_version()[0])<3:
+                   return cls(obj)
+            else:                   
+                   return cls(str.encode(obj))
 
         # Convert from c_char_p
         elif isinstance(obj, c_char_p):
