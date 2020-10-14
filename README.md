@@ -21,6 +21,15 @@ also in [0,255]. Although c_char means char type in C,
 by testing, it can pass [0,255] to unsigned char value 
 correctly(you may printf src in rp_from_buffer in rabinpoly.c).
 
+For converting bytes to int, I recommond
+
+Python2: int(chr(N).encode('hex'), 16)
+and
+Python3: import sys 
+         int.from_bytes(bytes([N]), byteorder=sys.byteorder),
+
+where N is a python int in [0,255].
+
 Rabin fingerprinting library in C, for chunking files into
 content-delimited variable sized blocks.
 
@@ -44,7 +53,10 @@ From tarball
 
 From git
 --------
-
+    ./Compile.sh
+    ./TestingTest.sh
+OR
+--
     make -f autotools.mk
     ./configure  --prefix=/usr
     make
