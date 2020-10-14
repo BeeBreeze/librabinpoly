@@ -53,6 +53,8 @@ From tarball
 
 From git
 --------
+Change path of libs in rabinpoly.py in all directories.
+    
     ./Compile.sh
     ./TestingTest.sh
 OR
@@ -60,6 +62,10 @@ OR
     make -f autotools.mk
     ./configure  --prefix=/usr
     make
+    2to3 python/rabinpoly.py -w
+
+Edit python/rabinpoly.py, replace c_ubyte in rp_from_buffer with c_char.
+
     make test
     sudo make install
 After above steps, don't forget add /usr/local/lib in $PATH by
