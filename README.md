@@ -68,7 +68,7 @@ Edit python/rabinpoly.py, replace c_ubyte in rp_from_buffer with c_char.
 
     make test
     sudo make install
-After above steps, don't forget add /usr/local/lib in $PATH by
+After above steps, you may add /usr/local/lib in $PATH by
 export PATH=$PATH:/usr/local/lib.
 
 History
