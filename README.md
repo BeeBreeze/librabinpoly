@@ -159,6 +159,9 @@ Pavan's version is used for Greg Ganger's 15-746/18-746 Storage
 Systems course at CMU (http://www.ece.cmu.edu/~ganger).  I'm basing
 my first version of librabinpoly on this code.
 
+In October 2020, BeeBreeze, a Doctor in Applied Math, modified the branch by 
+stevegt to be compatible with Python 3. Since he is not an engineer and 
+not good at coding, he just made some minor modifications. 
 
 Other rabinpoly libraries
 -------------------------
