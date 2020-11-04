@@ -70,6 +70,8 @@ Edit python/rabinpoly.py, replace c_ubyte in rp_from_buffer with c_char.
     sudo make install
 After above steps, you may add /usr/local/lib in $PATH by
 export PATH=$PATH:/usr/local/lib.
+If you don't want to install it, you may use the library by 
+export LD_LIBRARY_PATH=$(pwd)/src/.libs.
 
 History
 =======
