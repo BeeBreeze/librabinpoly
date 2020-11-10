@@ -62,8 +62,8 @@ OR
     make -f autotools.mk
     ./configure  --prefix=/usr
     make
-    2to3 python/rabinpoly.py -w
-
+    2to3 python/rabinpoly.py -w 
+If you don't like 2to3, you may add --output-language=py32 in Makefile.am and recompile from the beginning.
 Edit python/rabinpoly.py, replace c_ubyte in rp_from_buffer with c_char.
 
     make test
